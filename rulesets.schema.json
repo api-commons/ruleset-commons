@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rulesets.apicommons.org/rulesets.schema.json",
+  "title": "API Governance Ruleset Registry",
+  "description": "A machine-readable registry of adoptable, provenanced API-governance rulesets. Each entry describes an owned ruleset a team can adopt by reference — its provenance, source, how to consume it, and whether it is a governed standard or a tool default.",
+  "type": "object",
+  "required": ["name", "version", "rulesets"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "name": { "type": "string" },
+    "description": { "type": "string" },
+    "version": { "type": "string" },
+    "url": { "type": "string", "format": "uri" },
+    "source": { "type": "string", "format": "uri" },
+    "categories": {
+      "type": "object",
+      "description": "Human-readable descriptions of each category value.",
+      "additionalProperties": { "type": "string" }
+    },
+    "rulesets": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/ruleset" }
+    }
+  },
+  "$defs": {
+    "ruleset": {
+      "type": "object",
+      "required": ["id", "name", "publisher", "category", "description", "provenance", "sourceUrl", "adoptVia", "artifactTypes", "governed"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$",
+          "description": "Stable, lowercase, hyphenated identifier."
+        },
+        "name": { "type": "string", "description": "Display name of the ruleset." },
+        "publisher": { "type": "string", "description": "The organization or person that publishes it." },
+        "category": {
+          "type": "string",
+          "enum": ["national", "industry", "security", "vendor-default", "community", "company"],
+          "description": "What kind of source this ruleset is. 'vendor-default' means a tool's built-in config, not an owned standard."
+        },
+        "description": { "type": "string", "description": "One-to-three sentence summary of what the ruleset enforces." },
+        "provenance": {
+          "type": "object",
+          "description": "Who owns and maintains the ruleset, and where that ownership is documented.",
+          "required": ["owner", "url"],
+          "additionalProperties": false,
+          "properties": {
+            "owner": { "type": "string", "description": "The accountable owner/maintainer." },
+            "url": { "type": "string", "format": "uri", "description": "Canonical URL documenting the owner (repo, org page, or docs)." }
+          }
+        },
+        "sourceUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "The repository or raw source where the ruleset lives."
+        },
+        "adoptVia": {
+          "type": "object",
+          "description": "How a team consumes the ruleset in their own project.",
+          "required": ["method", "value"],
+          "additionalProperties": false,
+          "properties": {
+            "method": {
+              "type": "string",
+              "enum": ["extends", "npm", "copy"],
+              "description": "extends = remote URL referenced from a linter config; npm = installable package; copy = built-in/config to paste."
+            },
+            "value": {
+              "type": "string",
+              "description": "The remote extends URL, the npm package name, or the config snippet to copy."
+            },
+            "note": { "type": "string", "description": "Optional adoption guidance." }
+          }
+        },
+        "artifactTypes": {
+          "type": "array",
+          "description": "Which API artifact types the ruleset governs.",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": ["openapi", "asyncapi", "arazzo", "graphql", "json-schema", "apis-json", "overlay"]
+          }
+        },
+        "governed": {
+          "type": "boolean",
+          "description": "true = an owned, provenanced standard carrying naming/ownership/domain rules; false = a tool default / ad-hoc config."
+        },
+        "notes": { "type": "string", "description": "Free-form context, provenance detail, or adoption evidence." }
+      }
+    }
+  }
+}
