@@ -1,0 +1,34 @@
+{
+  "name": "ruleset-commons",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A public registry and browsable directory of adoptable, provenanced API-governance rulesets — so teams can adopt a real owned ruleset by reference instead of running the linter's defaults. An API Commons tool. The core artifact is the open rulesets.json registry.",
+  "license": "Apache-2.0",
+  "author": "API Evangelist (https://apievangelist.com)",
+  "homepage": "https://rulesets.apicommons.org",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/api-commons/ruleset-commons.git"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "spectral",
+    "openapi",
+    "asyncapi",
+    "api-governance",
+    "ruleset",
+    "registry",
+    "linting",
+    "api-commons"
+  ],
+  "devDependencies": {
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11"
+  }
+}

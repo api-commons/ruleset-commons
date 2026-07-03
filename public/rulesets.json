@@ -1,0 +1,338 @@
+{
+  "$schema": "https://rulesets.apicommons.org/rulesets.schema.json",
+  "name": "API Governance Ruleset Registry",
+  "description": "A curated, machine-readable registry of adoptable, provenanced API-governance rulesets — national, industry, security, company, and community rulesets you can adopt by reference instead of running the linter's defaults. Maintained by API Commons. PRs welcome.",
+  "version": "1.0.0",
+  "url": "https://rulesets.apicommons.org/rulesets.json",
+  "source": "https://github.com/api-commons/ruleset-commons",
+  "categories": {
+    "national": "Owned and maintained by a national or sub-national government as public policy.",
+    "industry": "Encodes a cross-vendor industry standard or specification (e.g. JSON:API, a sector API standard).",
+    "security": "Focused on API security posture — OWASP API Security Top 10 and related hardening rules.",
+    "company": "A single company's public API standards, published as an adoptable ruleset.",
+    "community": "Maintained by an individual or open community as a shared, reusable ruleset.",
+    "vendor-default": "The linter or tool's own built-in default. Config, not a standard — carries no naming, ownership, or domain rules."
+  },
+  "rulesets": [
+    {
+      "id": "italia-api-oas-checker",
+      "name": "Italian API OAS Checker",
+      "publisher": "Team Digitale / AgID (Government of Italy)",
+      "category": "national",
+      "description": "The Italian government's official Spectral ruleset enforcing the Modello di Interoperabilità (ModI) and the national API design guidelines against OpenAPI definitions. The reference example of a governed national ruleset adopted by reference.",
+      "provenance": {
+        "owner": "Dipartimento per la trasformazione digitale, Presidency of the Council of Ministers (Italy)",
+        "url": "https://github.com/italia/api-oas-checker"
+      },
+      "sourceUrl": "https://github.com/italia/api-oas-checker",
+      "adoptVia": {
+        "method": "extends",
+        "value": "https://italia.github.io/api-oas-checker/spectral.yml",
+        "note": "Reference the hosted ruleset directly from your .spectral.yml `extends`. A pinned release is also published at https://github.com/italia/api-oas-checker-rules/releases."
+      },
+      "artifactTypes": ["openapi"],
+      "governed": true,
+      "notes": "The exemplar for this registry: pulled remotely in the wild by teamdigitale/* and italia/* pipelines (e.g. teamdigitale/dati-semantic-backend, italia/spid-cie-oidc-schemas) rather than copied. A real owned, versioned, government-maintained standard."
+    },
+    {
+      "id": "nl-adr-ruleset",
+      "name": "NL API Design Rules (ADR)",
+      "publisher": "Dutch Government — developer.overheid.nl / NL API Strategie",
+      "category": "national",
+      "description": "The machine-readable Spectral encoding of the Netherlands' API Design Rules (ADR), the national standard for government REST APIs, hosted for direct remote adoption.",
+      "provenance": {
+        "owner": "Logius / NL API Strategie working group (Kennisplatform APIs), Dutch central government",
+        "url": "https://developer.overheid.nl/kennisbank/apis/"
+      },
+      "sourceUrl": "https://static.developer.overheid.nl/adr/ruleset.yaml",
+      "adoptVia": {
+        "method": "extends",
+        "value": "https://static.developer.overheid.nl/adr/2.1/ruleset.yaml",
+        "note": "Version-pin against a specific ADR release (e.g. /adr/2.1/); the unversioned /adr/ruleset.yaml tracks latest."
+      },
+      "artifactTypes": ["openapi"],
+      "governed": true,
+      "notes": "A national government standard published specifically to be consumed remotely. Seen extended by Dutch public-sector pipelines (BRP-API, lvbag, VNG-Realisatie) in the research corpus."
+    },
+    {
+      "id": "vng-haal-centraal-common",
+      "name": "Haal Centraal Common (VNG)",
+      "publisher": "VNG Realisatie (Association of Netherlands Municipalities)",
+      "category": "national",
+      "description": "Shared Spectral rules governing the Dutch municipal Haal Centraal API family, extended across the VNG-Realisatie and BRP-API repositories so every municipal-data API is linted against one common standard.",
+      "provenance": {
+        "owner": "VNG Realisatie, on behalf of Dutch municipalities",
+        "url": "https://github.com/VNG-Realisatie/Haal-Centraal-common"
+      },
+      "sourceUrl": "https://github.com/VNG-Realisatie/Haal-Centraal-common",
+      "adoptVia": {
+        "method": "extends",
+        "value": "https://raw.githubusercontent.com/VNG-Realisatie/Haal-Centraal-common/master/.spectral.yml",
+        "note": "Extended remotely by the individual Haal-Centraal API repos rather than duplicated in each."
+      },
+      "artifactTypes": ["openapi"],
+      "governed": true,
+      "notes": "A sub-national / sector-of-government shared ruleset — a real-world hub-and-spoke example where many API repos consume one owned rule source."
+    },
+    {
+      "id": "stoplight-owasp-ruleset",
+      "name": "Spectral OWASP API Security",
+      "publisher": "Stoplight (SmartBear) + community maintainers",
+      "category": "security",
+      "description": "A Spectral ruleset that encodes the OWASP API Security Top 10 as automated checks against OpenAPI definitions — auth, rate limiting, mass-assignment, error handling, and more.",
+      "provenance": {
+        "owner": "Stoplight / open-source maintainers (Andrew Farries, Roberto Polli et al.)",
+        "url": "https://github.com/stoplightio/spectral-owasp-ruleset"
+      },
+      "sourceUrl": "https://github.com/stoplightio/spectral-owasp-ruleset",
+      "adoptVia": {
+        "method": "npm",
+        "value": "@stoplight/spectral-owasp-ruleset",
+        "note": "Install and `extends` it, or reference the built ruleset at https://raw.githubusercontent.com/stoplightio/spectral-owasp-ruleset/main/dist/ruleset.yaml"
+      },
+      "artifactTypes": ["openapi"],
+      "governed": true,
+      "notes": "The de-facto community security ruleset; a governed, versioned standard rather than a linter default."
+    },
+    {
+      "id": "api-common-spectral-owasp",
+      "name": "API Commons OWASP Ruleset",
+      "publisher": "API Commons (API Evangelist)",
+      "category": "security",
+      "description": "The API Commons sibling security ruleset — a curated, governed OWASP API Security Top 10 Spectral ruleset published in the @api-common family alongside this registry.",
+      "provenance": {
+        "owner": "API Evangelist / API Commons (Kin Lane)",
+        "url": "https://github.com/api-commons/spectral-owasp-ruleset"
+      },
+      "sourceUrl": "https://github.com/api-commons/spectral-owasp-ruleset",
+      "adoptVia": {
+        "method": "npm",
+        "value": "@api-common/spectral-owasp-ruleset",
+        "note": "Part of the API Commons tool family; being developed alongside ruleset-commons."
+      },
+      "artifactTypes": ["openapi"],
+      "governed": true,
+      "notes": "In development. Listed here so the supply side of the API Commons stack is self-referential and discoverable."
+    },
+    {
+      "id": "spectral-oas-default",
+      "name": "Spectral built-in OAS ruleset (spectral:oas)",
+      "publisher": "Stoplight (SmartBear)",
+      "category": "vendor-default",
+      "description": "Spectral's own bundled ruleset for OpenAPI 2/3 (and spectral:asyncapi for AsyncAPI). Structural and validity checks only.",
+      "provenance": {
+        "owner": "Stoplight — this is the linter's default config, not an organizational standard",
+        "url": "https://github.com/stoplightio/spectral-rulesets"
+      },
+      "sourceUrl": "https://github.com/stoplightio/spectral-rulesets",
+      "adoptVia": {
+        "method": "copy",
+        "value": "extends: [[spectral:oas, all]]",
+        "note": "Built into Spectral; no install needed. `spectral:asyncapi` is the AsyncAPI equivalent."
+      },
+      "artifactTypes": ["openapi", "asyncapi"],
+      "governed": false,
+      "notes": "Config, not a standard. The research found 63% of 1,005 pipelines run exactly this kind of implicit default — it carries no naming, ownership, or domain rules. Listed here, honestly labeled, so teams see what they are actually running."
+    },
+    {
+      "id": "redocly-recommended",
+      "name": "Redocly recommended ruleset",
+      "publisher": "Redocly",
+      "category": "vendor-default",
+      "description": "Redocly CLI's built-in `recommended` (and `minimal`) rule configuration for OpenAPI, applied via redocly.yaml.",
+      "provenance": {
+        "owner": "Redocly — a tool default, not an organizational standard",
+        "url": "https://redocly.com/docs/cli/rules"
+      },
+      "sourceUrl": "https://github.com/Redocly/redocly-cli",
+      "adoptVia": {
+        "method": "copy",
+        "value": "extends:\n  - recommended",
+        "note": "Add to redocly.yaml. Redocly is a different linter from Spectral, but the same 'default vs owned standard' distinction applies."
+      },
+      "artifactTypes": ["openapi"],
+      "governed": false,
+      "notes": "Config, not a standard. Included to show the same default trap exists outside Spectral."
+    },
+    {
+      "id": "vacuum-recommended",
+      "name": "vacuum recommended ruleset",
+      "publisher": "quobix (Dave Shanley)",
+      "category": "vendor-default",
+      "description": "vacuum's built-in recommended rules — a fast, Spectral-compatible OpenAPI linter's default configuration.",
+      "provenance": {
+        "owner": "quobix / vacuum project — a tool default, not an organizational standard",
+        "url": "https://quobix.com/vacuum/rules/"
+      },
+      "sourceUrl": "https://github.com/daveshanley/vacuum",
+      "adoptVia": {
+        "method": "copy",
+        "value": "# vacuum lint uses recommended rules by default\nvacuum lint openapi.yaml",
+        "note": "vacuum consumes Spectral-format rulesets, so any governed ruleset in this registry can replace the default."
+      },
+      "artifactTypes": ["openapi"],
+      "governed": false,
+      "notes": "Config, not a standard. vacuum can consume the owned rulesets listed here — swap the default for one."
+    },
+    {
+      "id": "baloise-spectral-ruleset",
+      "name": "Baloise Spectral Ruleset",
+      "publisher": "Baloise Group",
+      "category": "company",
+      "description": "Baloise's public Spectral ruleset implementing the Zalando RESTful API Guidelines as enforceable rules for the company's OpenAPI definitions.",
+      "provenance": {
+        "owner": "Baloise Group (baloise-incubator)",
+        "url": "https://github.com/baloise-incubator/spectral-ruleset"
+      },
+      "sourceUrl": "https://github.com/baloise-incubator/spectral-ruleset",
+      "adoptVia": {
+        "method": "extends",
+        "value": "https://raw.githubusercontent.com/baloise-incubator/spectral-ruleset/main/zalando.yml",
+        "note": "A company operationalizing an industry standard (Zalando) as a concrete, adoptable ruleset."
+      },
+      "artifactTypes": ["openapi"],
+      "governed": true,
+      "notes": "Good example of the standard-to-ruleset path: an industry guideline turned into a machine-readable, owned company ruleset."
+    },
+    {
+      "id": "sailpoint-api-linter",
+      "name": "SailPoint API Linter",
+      "publisher": "SailPoint Technologies",
+      "category": "company",
+      "description": "SailPoint's open API linter — a root Spectral ruleset (plus product-specific rulesets) encoding SailPoint's REST API standards.",
+      "provenance": {
+        "owner": "SailPoint Technologies (sailpoint-oss)",
+        "url": "https://github.com/sailpoint-oss/api-linter"
+      },
+      "sourceUrl": "https://github.com/sailpoint-oss/api-linter",
+      "adoptVia": {
+        "method": "extends",
+        "value": "https://raw.githubusercontent.com/sailpoint-oss/api-linter/main/root-ruleset.yaml",
+        "note": "Additional path/schema rulesets live alongside the root ruleset in the same repo."
+      },
+      "artifactTypes": ["openapi"],
+      "governed": true,
+      "notes": "A vendor publishing its own governed API standards as an adoptable ruleset."
+    },
+    {
+      "id": "connectedcircuits-devops-api-linter",
+      "name": "DevOps API Linter",
+      "publisher": "Connected Circuits (community)",
+      "category": "community",
+      "description": "A shared, general-purpose Spectral ruleset for consistent REST API design (naming, versioning, responses) intended for DevOps CI pipelines.",
+      "provenance": {
+        "owner": "connectedcircuits (open-source maintainer)",
+        "url": "https://github.com/connectedcircuits/devops-api-linter"
+      },
+      "sourceUrl": "https://github.com/connectedcircuits/devops-api-linter",
+      "adoptVia": {
+        "method": "extends",
+        "value": "https://raw.githubusercontent.com/connectedcircuits/devops-api-linter/main/rules.yaml",
+        "note": "Reference the raw rules.yaml directly from your .spectral.yml `extends`."
+      },
+      "artifactTypes": ["openapi"],
+      "governed": true,
+      "notes": "The single most-referenced remote ruleset in the 1,005-pipeline research corpus — 74 pipelines extend this one URL. Proof that a good shared ruleset gets adopted widely by reference."
+    },
+    {
+      "id": "ignitia-spectral-validators",
+      "name": "Ignitia Spectral Validators",
+      "publisher": "Ignitia",
+      "category": "company",
+      "description": "Ignitia's shared Spectral ruleset, published so its API repositories lint against one common, remotely-referenced standard.",
+      "provenance": {
+        "owner": "Ignitia (ignitia-core)",
+        "url": "https://github.com/ignitia-core/ignitia-tools-validators-spectral"
+      },
+      "sourceUrl": "https://github.com/ignitia-core/ignitia-tools-validators-spectral",
+      "adoptVia": {
+        "method": "extends",
+        "value": "https://raw.githubusercontent.com/ignitia-core/ignitia-tools-validators-spectral/master/spectral-ruleset.yaml",
+        "note": "Consumed remotely by Ignitia's API pipelines."
+      },
+      "artifactTypes": ["openapi"],
+      "governed": true,
+      "notes": "Another real remote/shared ruleset observed in the corpus."
+    },
+    {
+      "id": "spectral-jsonapi-ruleset",
+      "name": "Spectral JSON:API Ruleset",
+      "publisher": "jmlue42 (community)",
+      "category": "industry",
+      "description": "A Spectral ruleset validating OpenAPI definitions against the JSON:API specification — structure, member names, relationships, and content negotiation.",
+      "provenance": {
+        "owner": "jmlue42 (open-source maintainer)",
+        "url": "https://github.com/jmlue42/spectral-jsonapi-ruleset"
+      },
+      "sourceUrl": "https://github.com/jmlue42/spectral-jsonapi-ruleset",
+      "adoptVia": {
+        "method": "extends",
+        "value": "https://raw.githubusercontent.com/jmlue42/spectral-jsonapi-ruleset/main/.spectral.yml",
+        "note": "Encodes an industry media-type spec (JSON:API) as adoptable rules."
+      },
+      "artifactTypes": ["openapi"],
+      "governed": true,
+      "notes": "Represents the 'industry standard as ruleset' category — conformance to a cross-vendor spec rather than one org's house style."
+    },
+    {
+      "id": "zalando-restful-api-guidelines",
+      "name": "Zalando RESTful API Guidelines",
+      "publisher": "Zalando SE",
+      "category": "industry",
+      "description": "Zalando's widely-cited RESTful API Guidelines — a de-facto industry reference for REST design that many organizations adopt or fork.",
+      "provenance": {
+        "owner": "Zalando SE",
+        "url": "https://github.com/zalando/restful-api-guidelines"
+      },
+      "sourceUrl": "https://opensource.zalando.com/restful-api-guidelines/",
+      "adoptVia": {
+        "method": "extends",
+        "value": "https://raw.githubusercontent.com/baloise-incubator/spectral-ruleset/main/zalando.yml",
+        "note": "The guidelines themselves are prose; the most complete machine-readable Spectral encoding is Baloise's zalando.yml. Zalando also maintains the Zally linter (github.com/zalando/zally)."
+      },
+      "artifactTypes": ["openapi"],
+      "governed": true,
+      "notes": "Illustrates the gap between a published standard (prose) and its adoptable machine-readable form (a ruleset). Cross-referenced with the Baloise entry."
+    },
+    {
+      "id": "jaytech-spectral-ruleset",
+      "name": "JayTech Spectral Ruleset",
+      "publisher": "JayTech (community)",
+      "category": "community",
+      "description": "A hosted, remotely-adoptable Spectral ruleset for OpenAPI consistency, published at a stable URL for `extends`.",
+      "provenance": {
+        "owner": "JayTech (community maintainer)",
+        "url": "https://jaytech.nl"
+      },
+      "sourceUrl": "https://spectral.jaytech.nl/spectral-ruleset.yaml",
+      "adoptVia": {
+        "method": "extends",
+        "value": "https://spectral.jaytech.nl/spectral-ruleset.yaml",
+        "note": "A community example of hosting a ruleset at a dedicated, stable domain for adoption by reference."
+      },
+      "artifactTypes": ["openapi"],
+      "governed": true,
+      "notes": "Observed extended remotely in the research corpus."
+    },
+    {
+      "id": "stoplight-spectral-standard",
+      "name": "Stoplight Spectral Standard",
+      "publisher": "Stoplight (SmartBear)",
+      "category": "community",
+      "description": "Stoplight's opinionated 'standard' ruleset that layers naming and consistency conventions on top of the built-in spectral:oas structural checks.",
+      "provenance": {
+        "owner": "Stoplight (stoplightio)",
+        "url": "https://github.com/stoplightio/spectral-standard"
+      },
+      "sourceUrl": "https://github.com/stoplightio/spectral-standard",
+      "adoptVia": {
+        "method": "extends",
+        "value": "https://raw.githubusercontent.com/stoplightio/spectral-standard/main/rulesets/.spectral.yaml",
+        "note": "Goes beyond spectral:oas by adding style/consistency rules — closer to an owned standard than a bare default."
+      },
+      "artifactTypes": ["openapi"],
+      "governed": true,
+      "notes": "The bridge between a vendor default and a governed standard: a named, versioned ruleset that adds design conventions."
+    }
+  ]
+}
