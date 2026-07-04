@@ -108,3 +108,5 @@ your own owned ruleset, developing the standards behind it, reviews, and pipelin
 — when you want hands on the work.
 
 Licensed under [Apache-2.0](LICENSE).
+
+**Governance guidance** — the human *why* behind this tool: [Provenance](https://guidance.apievangelist.com/store/provenance/) at guidance.apievangelist.com.
