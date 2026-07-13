@@ -8,9 +8,7 @@ pipelines**, **63% ran the linter's implicit defaults** and only **8** extended 
 shared, remote ruleset. The demand for governance is there — the *supply* of
 adoptable, owned rulesets is not.
 
-**Ruleset Commons is the supply side.** It is a curated registry of rulesets you
-can adopt **by reference** — a national government's ruleset, an industry
-standard, a security ruleset, or a company's public API standards — instead of
+**Ruleset Commons is the supply side.** It is a curated registry of rulesets you can adopt **by reference** — a national government's ruleset, an industry standard, a security ruleset, or a company's public API standards — instead of
 silently running Spectral's, Redocly's, or vacuum's defaults.
 
 The tool is deliberately simple, in the spirit of the
