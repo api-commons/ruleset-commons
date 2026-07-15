@@ -333,6 +333,26 @@
       "artifactTypes": ["openapi"],
       "governed": true,
       "notes": "The bridge between a vendor default and a governed standard: a named, versioned ruleset that adds design conventions."
+    },
+    {
+      "id": "api-authorization-profile",
+      "name": "API Authorization Profile",
+      "publisher": "API Commons",
+      "category": "security",
+      "description": "A two-tier (normal/high) ruleset that lints an API's authorization posture against OAuth 2.1 (RFC 9700) and FAPI 2.0. Ships two rule files — one for OpenAPI, one for OAuth 2.0 Authorization Server metadata (RFC 8414) — covering client authentication (private_key_jwt/mTLS), DPoP sender-constraining, PAR, PKCE S256, response types, and signing algorithms. Generalized from Germany's federal API authorization security profiles.",
+      "provenance": {
+        "owner": "API Commons (Kin Lane)",
+        "url": "https://apicommons.org/api-authorization"
+      },
+      "sourceUrl": "https://github.com/api-commons/spectral-api-authorization-ruleset",
+      "adoptVia": {
+        "method": "npm",
+        "value": "@api-common/spectral-api-authorization-ruleset",
+        "note": "Install and reference `api-authorization-openapi.yaml` against your OpenAPI and `api-authorization-oauth-metadata.yaml` against your /.well-known OAuth Authorization Server metadata."
+      },
+      "artifactTypes": ["openapi", "oauth-metadata"],
+      "governed": true,
+      "notes": "Two lint targets: the OpenAPI carries the scheme/flow/scope contract; the OAuth AS metadata (RFC 8414) carries the FAPI-specific truth (DPoP, PAR, client auth, PKCE). Static conformance is a floor, not a certificate — it checks the declared contract, not runtime enforcement."
     }
   ]
 }

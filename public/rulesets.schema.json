@@ -80,7 +80,7 @@
           "minItems": 1,
           "items": {
             "type": "string",
-            "enum": ["openapi", "asyncapi", "arazzo", "graphql", "json-schema", "apis-json", "overlay"]
+            "enum": ["openapi", "asyncapi", "arazzo", "graphql", "json-schema", "apis-json", "overlay", "oauth-metadata"]
           }
         },
         "governed": {
