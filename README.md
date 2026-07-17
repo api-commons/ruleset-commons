@@ -97,9 +97,7 @@ copy-paste "how to adopt" snippet.
 
 Ruleset Commons is free, open tooling maintained under
 [API Commons](https://apicommons.org), a project of
-[API Evangelist](https://apievangelist.com). It sits alongside
-[Spectral Reporter](https://reporter.apicommons.org),
-[API Validator](https://validator.apicommons.org), and the rest of the family. The
+[API Evangelist](https://apievangelist.com). The
 open tools exist to make good governance the easy path; API Evangelist offers
 expert [governance services](https://apievangelist.com/services/) — authoring
 your own owned ruleset, developing the standards behind it, reviews, and pipelines
@@ -108,3 +106,15 @@ your own owned ruleset, developing the standards behind it, reviews, and pipelin
 Licensed under [Apache-2.0](LICENSE).
 
 **Governance guidance** — the human *why* behind this tool: [Provenance](https://guidance.apievangelist.com/store/provenance/) at guidance.apievangelist.com.
+
+## Part of API Commons
+
+An open, browser-first tool from **[API Commons](https://apicommons.org)** — free, no backend, your data stays in your browser. Browse the full set at **[apicommons.org/tools](https://apicommons.org/tools/)**.
+
+**Related tools**
+- [Spectral Ruleset Studio](https://studio.apicommons.org) — turn a style guide into an owned ruleset
+- [Spectral OWASP Ruleset](https://github.com/api-commons/spectral-owasp-ruleset) — OWASP API Security layer
+- [Spectral Reporter](https://reporter.apicommons.org) — Spectral JSON → self-contained HTML report
+- [API Validator](https://validator.apicommons.org) — lint OpenAPI/AsyncAPI/Arazzo/JSON Schema in-browser
+- [Governance Coverage](https://coverage.apicommons.org) — how much of your API your rules actually check
+- [Governance Pipeline](https://github.com/api-commons/governance-pipeline) — a forkable PR-gated governance pipeline
