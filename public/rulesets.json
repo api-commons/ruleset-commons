@@ -353,6 +353,26 @@
       "artifactTypes": ["openapi", "oauth-metadata"],
       "governed": true,
       "notes": "Two lint targets: the OpenAPI carries the scheme/flow/scope contract; the OAuth AS metadata (RFC 8414) carries the FAPI-specific truth (DPoP, PAR, client auth, PKCE). Static conformance is a floor, not a certificate — it checks the declared contract, not runtime enforcement."
+    },
+    {
+      "id": "api-common-problem-details",
+      "name": "API Commons Problem Details Ruleset",
+      "publisher": "API Commons (API Evangelist)",
+      "category": "industry",
+      "description": "Lints an OpenAPI's error responses against RFC 9457, Problem Details for HTTP APIs. Sixteen rules covering the problem+json media type, the five members and their JSON types, extension members, type URIs, the WWW-Authenticate and Retry-After headers that belong with 401 and 429, and implementation leakage. Built on the specification's own rule that a member whose value type does not match MUST be ignored, so a status member typed as a string fails silently at every conforming consumer.",
+      "provenance": {
+        "owner": "API Evangelist / API Commons (Kin Lane)",
+        "url": "https://github.com/api-commons/spectral-problem-details-ruleset"
+      },
+      "sourceUrl": "https://github.com/api-commons/spectral-problem-details-ruleset",
+      "adoptVia": {
+        "method": "extends",
+        "value": "https://raw.githubusercontent.com/api-commons/spectral-problem-details-ruleset/main/problem-details.yaml",
+        "note": "Reference the hosted ruleset directly from your .spectral.yml `extends`, or install @api-common/spectral-problem-details-ruleset. Built-in Spectral functions only, so it also runs in the browser validator."
+      },
+      "artifactTypes": ["openapi"],
+      "governed": true,
+      "notes": "Grounded in RFC 9457 (July 2023), which obsoleted RFC 7807. Two residuals are documented rather than faked: it does not check that a problem's status member matches the response's HTTP status code, because comparing a response key against a value in that response's example is not expressible with built-in functions; and it does not flag urn:ietf:rfc:7807, which RFC 9457 Appendix B retained for the XML serialization. OpenAPI 3.x only, since Swagger 2.0 has no content map and the structural rules have no honest 2.0 twin."
     }
   ]
 }
