@@ -373,6 +373,26 @@
       "artifactTypes": ["openapi"],
       "governed": true,
       "notes": "Grounded in RFC 9457 (July 2023), which obsoleted RFC 7807. Two residuals are documented rather than faked: it does not check that a problem's status member matches the response's HTTP status code, because comparing a response key against a value in that response's example is not expressible with built-in functions; and it does not flag urn:ietf:rfc:7807, which RFC 9457 Appendix B retained for the XML serialization. OpenAPI 3.x only, since Swagger 2.0 has no content map and the structural rules have no honest 2.0 twin."
+    },
+    {
+      "id": "api-common-fhir",
+      "name": "API Commons FHIR Ruleset",
+      "publisher": "API Commons (API Evangelist)",
+      "category": "industry",
+      "description": "Lints an OpenAPI that describes an HL7 FHIR R4 or R5 RESTful API. Fifteen rules covering the application/fhir+json media type, OperationOutcome on errors, the /metadata CapabilityStatement a server SHALL expose, case-sensitive resource-type path segments checked against the 178-type R4 union R5 resource list, the ETag and If-Match optimistic-locking contract with its weak validator, searchset Bundles, and SMART App Launch scope syntax. Closes the gap between an API that returns Patient objects and an API that is actually FHIR.",
+      "provenance": {
+        "owner": "API Evangelist / API Commons (Kin Lane)",
+        "url": "https://github.com/api-commons/spectral-fhir-ruleset"
+      },
+      "sourceUrl": "https://github.com/api-commons/spectral-fhir-ruleset",
+      "adoptVia": {
+        "method": "extends",
+        "value": "https://raw.githubusercontent.com/api-commons/spectral-fhir-ruleset/main/fhir.yaml",
+        "note": "Reference the hosted ruleset directly from your .spectral.yml `extends`, or install @api-common/spectral-fhir-ruleset. Built-in Spectral functions only, so it also runs in the browser validator."
+      },
+      "artifactTypes": ["openapi"],
+      "governed": true,
+      "notes": "Governs the HTTP surface, not resource instances — profile and implementation-guide conformance needs StructureDefinitions, terminology servers and the resource graph, none of which exist inside an OpenAPI; use the HL7 validator for that. The resource list is the R4 union R5 union deliberately, so an R4 API using an R5-only type will not be caught. Validated against the public HAPI FHIR R4 server's own generated OpenAPI across 2,973 paths with zero false positives on resource types."
     }
   ]
 }
