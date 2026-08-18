@@ -118,3 +118,10 @@ An open, browser-first tool from **[API Commons](https://apicommons.org)** — f
 - [API Validator](https://validator.apicommons.org) — lint OpenAPI/AsyncAPI/Arazzo/JSON Schema in-browser
 - [Governance Coverage](https://coverage.apicommons.org) — how much of your API your rules actually check
 - [Governance Pipeline](https://github.com/api-commons/governance-pipeline) — a forkable PR-gated governance pipeline
+
+## License
+
+**[Apache-2.0](LICENSE).**
+
+API Commons licenses **code** under Apache-2.0 and **artifacts** — schemas, rulesets,
+examples and API descriptions — under CC BY-NC-SA 4.0.
